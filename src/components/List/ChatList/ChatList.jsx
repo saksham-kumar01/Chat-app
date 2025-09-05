@@ -11,7 +11,63 @@ const ChatList = () => {
           <img src="/search.png" alt="" />
           <input type="text" placeholder="Search..." />
         </div>
-        <img src="./plus.png" alt="" className="add" />
+        <img
+          src={addMode ? "./minus.png" : "./plus.png"}
+          alt=""
+          className="add"
+          onClick={() => setAddMode((prev) => !prev)}
+        />
+      </div>
+      <div className="chat-items">
+        <div id="item">
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <span>Sam</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div id="item">
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <span>Sam</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div id="item">
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <span>Sam</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div id="item">
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <span>Sam</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div id="item">
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <span>Sam</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div id="item">
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <span>Sam</span>
+            <p>Hello</p>
+          </div>
+        </div>
+        <div id="item">
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <span>Sam</span>
+            <p>Hello</p>
+          </div>
+        </div>
       </div>
     </div>
   );
