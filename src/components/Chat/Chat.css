@@ -1,3 +1,92 @@
-.chat{
-    flex: 2;
+.chat {
+  flex: 2;
+  border-right: 0.5px solid rgb(145, 144, 144);
+  border-left: 0.5px solid rgb(145, 144, 144);
+  height: 100%;
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5px 10px;
+    background-color: rgba(17, 25, 40, 0.75);
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        object-fit: cover;
+      }
+      .texts {
+        color: white;
+        span {
+          font-size: 18px;
+          font-weight: 500;
+        }
+        p {
+          font-size: 13px;
+          font-weight: 300;
+        }
+      }
+    }
+    .icons {
+      display: flex;
+      gap: 20px;
+      padding: 10px;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.75);
+    .emogi {
+      padding: 7px 0px 7px 4px;
+      img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+    }
+    .attach {
+      padding: 7px 0px 7px 4px;
+      img {
+        filter: brightness(0) invert(1);
+      }
+    }
+    #icons {
+      display: flex;
+      img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+    }
+
+    .input {
+      flex: 1;
+      display: flex;
+      background: none;
+      outline: none;
+      border: none;
+      color: white;
+      input {
+        flex: 1;
+      }
+      button{
+        padding-right: 5px;
+        padding-left: 5px;
+        cursor: pointer;
+      }
+    }
+    .mic{
+        padding-right: 5px;
+    }
+  }
 }
