@@ -9,7 +9,7 @@ const UserInfo = () => {
   return (
     <div className="user-info">
       <div className="user">
-        <img src={currentUser?.photoUrl || "./avatar.png"} alt="" />
+        <img src={currentUser.photoUrl || "./avatar.png"} alt="" />
         <h2>
           {currentUser?.username
             ? currentUser.username.charAt(0).toUpperCase() +

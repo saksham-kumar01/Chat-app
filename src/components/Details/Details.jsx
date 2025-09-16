@@ -1,5 +1,7 @@
 import React from "react";
 import "./Details.css";
+import { auth } from "../../lib/firebase";
+
 
 const Details = () => {
   return (
@@ -67,7 +69,7 @@ const Details = () => {
           </div>
         </div>
         <button>Block User</button>
-        <img className="logout" src="./turnon.png" alt="" />
+        <img onClick={()=>auth.signOut()} className="logout" src="./turnon.png" alt="" />
       </div>
     </div>
   );

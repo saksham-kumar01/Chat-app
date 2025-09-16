@@ -3,11 +3,12 @@ import "./Chat.css";
 import EmojiPicker from "emoji-picker-react";
 import { useUserStore } from "../../lib/userStore";
 
+
 const Chat = () => {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
   const endRef = useRef(null);
-  const{currentUser} = useUserStore()
+  const { currentUser } = useUserStore();
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -22,7 +23,7 @@ const Chat = () => {
     <div className="chat">
       <div className="top">
         <div className="user">
-          <img src={currentUser?.photoURL || "./avatar.png"} alt="" />
+          <img src="./avatar.png" alt="" />
           <div className="texts">
             <span>SAM</span>
             <p>let's go</p>
