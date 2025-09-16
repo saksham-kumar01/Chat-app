@@ -1,3 +1,119 @@
-.details{
-    flex: 1;
+.details {
+  flex: 1;
+  background-color: rgba(34, 54, 46, 0.492);
+  display: flex;
+  flex-direction: column;
+
+  .user {
+    padding: 2px 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    border-bottom: 1px solid gray;
+
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+    }
+
+    p {
+      font-style: italic;
+    }
+  }
+
+  .info {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    .options {
+      .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        img {
+          width: 20px;
+          height: 20px;
+          background-color: rgba(0, 0, 0, 0.419);
+          border-radius: 50%;
+          padding: 5px;
+          cursor: pointer;
+        }
+      }
+
+      .photos {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 20px;
+        overflow: scroll;
+
+        .photoItem {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .photoDetail {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            img {
+              width: 40px;
+              height: 40px;
+              border-radius: 5px;
+              object-fit: cover;
+            }
+
+            span {
+              font-size: 10px;
+              font-weight: 300;
+              color: lightgrey;
+            }
+          }
+
+          .photoDownload {
+            width: 25px;
+            height: 25px;
+            background-color: rgba(17, 25, 40, 0.3);
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    button {
+      padding: 10px 20px;
+      background-color: rgba(230, 74, 105, 0.553);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 17vw;
+
+      &:hover {
+        background-color: rgba(230, 74, 105, 0.844);
+      }
+    }
+    .logout {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      bottom: 3px;
+      right: -3px;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(0) invert(0); 
+        cursor: pointer;
+        transition: 0.15s ease;
+      }
+    }
+  }
 }
