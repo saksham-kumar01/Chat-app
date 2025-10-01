@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import "./Chat.css";
 import EmojiPicker from "emoji-picker-react";
 import { useUserStore } from "../../lib/userStore";
@@ -25,7 +25,8 @@ const Chat = () => {
   const endRef = useRef(null);
 
   const { currentUser } = useUserStore();
-  const { chatId, user } = useChatStore();
+  const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
+    useChatStore();
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -127,9 +128,9 @@ const Chat = () => {
     <div className="chat">
       <div className="top">
         <div className="user">
-          <img src="./avatar.png" alt="" />
+          <img src={user?.photoUrl || "./avatar.png"} alt="" />
           <div className="texts">
-            <span>SAM</span>
+            <span>{user?.usernamen}</span>
             <p>let's go</p>
           </div>
         </div>
@@ -141,7 +142,12 @@ const Chat = () => {
       </div>
       <div className="centre">
         {chat?.messages?.map((message) => (
-          <div className={message.senderId === currentUser.id ? "message-own" : "message"} key={message?.createdAt}>
+          <div
+            className={
+              message.senderId === currentUser.id ? "message-own" : "message"
+            }
+            key={message?.createdAt}
+          >
             <div className="texts">
               {message.img && <img src={message.img} alt="" />}
               <p>{message.text}</p>
@@ -188,8 +194,13 @@ const Chat = () => {
             value={text}
             placeholder="Type a Message..."
             onChange={(e) => setText(e.target.value)}
+            disabled={isCurrentUserBlocked || isReceiverBlocked}
           />
-          <button className="send" onClick={handleSend}>
+          <button
+            className="send"
+            onClick={handleSend}
+            disabled={isCurrentUserBlocked || isReceiverBlocked}
+          >
             Send
           </button>
         </div>

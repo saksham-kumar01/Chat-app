@@ -163,6 +163,10 @@
         outline: none;
         border: none;
         color: white;
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
       }
       button {
         padding-right: 5px;
@@ -172,6 +176,11 @@
         outline: none;
         border: none;
         color: white;
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
       }
     }
     .mic {
