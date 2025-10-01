@@ -11,7 +11,7 @@ const UserInfo = () => {
       <div className="user">
         <img src={currentUser.photoUrl || "./avatar.png"} alt="" />
         <h2>
-          {currentUser?.username
+          {currentUser.username
             ? currentUser.username.charAt(0).toUpperCase() +
               currentUser.username.slice(1).toLowerCase()
             : "User"}
