@@ -11,6 +11,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useChatStore } from "../../lib/chatStore";
+import { uploadFile } from "../../lib/s3";
 
 const Chat = () => {
   const [chat, setChat] = useState();
@@ -71,7 +72,7 @@ const Chat = () => {
 
     try {
       if (image.file) {
-        imageUrl = await upload(image.file);
+        imageUrl = await uploadFile(image.file);
       }
 
       await updateDoc(doc(db, "chats", chatId), {
@@ -144,7 +145,7 @@ const Chat = () => {
             <div className="texts">
               {message.img && <img src={message.img} alt="" />}
               <p>{message.text}</p>
-              <span>{message.createdAt}</span>
+              {/* <span>{message.createdAt}</span> */}
             </div>
           </div>
         ))}
