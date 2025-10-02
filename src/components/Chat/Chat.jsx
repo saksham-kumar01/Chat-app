@@ -67,7 +67,8 @@ const Chat = () => {
   };
 
   const handleSend = async () => {
-    if (text === "") return;
+    if (text.trim() === "") return;
+    if (isCurrentUserBlocked) return;
 
     let imageUrl = null;
 
@@ -192,7 +193,11 @@ const Chat = () => {
           <input
             type="text"
             value={text}
-            placeholder={isCurrentUserBlocked || isReceiverBlocked ? "You are blocked" : "Type a Message..."}
+            placeholder={
+              isCurrentUserBlocked || isReceiverBlocked
+                ? "You are blocked"
+                : "Type a Message..."
+            }
             onChange={(e) => setText(e.target.value)}
             disabled={isCurrentUserBlocked || isReceiverBlocked}
           />
