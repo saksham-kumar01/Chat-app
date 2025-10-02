@@ -9,6 +9,8 @@ import { useChatStore } from "../../../lib/chatStore";
 const ChatList = () => {
   const [chats, setChats] = useState([]);
   const [addMode, setAddMode] = useState(false);
+  const [search, setSearch] = useState("");
+
   const { currentUser } = useUserStore();
   const { changeChat } = useChatStore();
 
@@ -42,33 +44,39 @@ const ChatList = () => {
       return rest;
     });
 
-    const chatIndex = userChats.findIndex((item) => item.chatId === chat.chatId);
+    const chatIndex = userChats.findIndex(
+      (item) => item.chatId === chat.chatId
+    );
 
     userChats[chatIndex].isSeen = true;
 
     const userChatRef = doc(db, "userchats", currentUser.id);
 
-    try{
-  
+    try {
       await updateDoc(userChatRef, {
         chats: userChats,
       });
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }
 
-
-    
-
     changeChat(chat.chatId, chat.user);
   };
+
+  const filteredChats = chats.filter((c) =>
+    c.user.username.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className="chatlist">
       <div className="search">
         <div className="searchBar">
           <img src="/search.png" alt="" />
-          <input type="text" placeholder="Search..." />
+          <input
+            type="text"
+            placeholder="Search..."
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </div>
         <img
           src={addMode ? "./minus.png" : "./plus.png"}
@@ -79,7 +87,7 @@ const ChatList = () => {
       </div>
 
       <div className="chat-items">
-        {chats.map((chat) => (
+        {filteredChats.map((chat) => (
           <div
             id="item"
             key={chat.chatId}
@@ -88,10 +96,19 @@ const ChatList = () => {
               backgroundColor: chat?.isSeen ? "transparent" : "#5183fe",
             }}
           >
-            <img src={chat.user.photoUrl || "./avatar.png"} alt="" />
+            <img
+              src={
+                chat.user.blocked.includes(currentUser.id)
+                  ? "./avatar.png"
+                  : chat.user.photoUrl || "./avatar.png"
+              }
+              alt=""
+            />
             <div className="texts">
               <span>
-                {chat.user.username
+                {chat.user.blocked.includes(currentUser.id)
+                  ? "User"
+                  : chat.user.username
                   ? chat.user.username.charAt(0).toUpperCase() +
                     chat.user.username.slice(1).toLowerCase()
                   : "User"}

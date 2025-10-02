@@ -130,7 +130,7 @@ const Chat = () => {
         <div className="user">
           <img src={user?.photoUrl || "./avatar.png"} alt="" />
           <div className="texts">
-            <span>{user?.usernamen}</span>
+            <span>{user?.username}</span>
             <p>let's go</p>
           </div>
         </div>
@@ -192,7 +192,7 @@ const Chat = () => {
           <input
             type="text"
             value={text}
-            placeholder="Type a Message..."
+            placeholder={isCurrentUserBlocked || isReceiverBlocked ? "You are blocked" : "Type a Message..."}
             onChange={(e) => setText(e.target.value)}
             disabled={isCurrentUserBlocked || isReceiverBlocked}
           />
