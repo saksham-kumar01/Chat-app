@@ -72,24 +72,6 @@ const Chat = () => {
     let imageUrl = null;
 
     try {
-      const senderChatDoc = await getDoc(doc(db, "userchats", currentUser.id));
-      const receiverChatDoc = await getDoc(doc(db, "userchats", user.id));
-
-      const senderBlocked = senderChatDoc.exists()
-        ? senderChatDoc.data().blocked || []
-        : [];
-      const receiverBlocked = receiverChatDoc.exists()
-        ? receiverChatDoc.data().blocked || []
-        : [];
-
-      // if either side has blocked, stop sending
-      if (
-        senderBlocked.includes(user.id) ||
-        receiverBlocked.includes(currentUser.id)
-      )
-        console.log("Message blocked by blocklist 🚫");
-      return;
-
       if (image.file) {
         imageUrl = await uploadFile(image.file);
       }
